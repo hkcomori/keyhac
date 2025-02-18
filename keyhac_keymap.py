@@ -1337,6 +1337,10 @@ class Keymap(ckit.Window):
                 self.input_seq.append( pyauto.KeyDown(vk_mod[0]) )
                 self.virtual_modifier |= vk_mod[1]
 
+        # Win と Alt の単体押しをキャンセル
+        if cancel_oneshot_win_alt:
+            self.input_seq.append( pyauto.Key( VK_LCONTROL ) )
+
     def setInput_FromString( self, s ):
 
         s = s.upper()
